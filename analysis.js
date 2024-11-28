@@ -12,7 +12,7 @@
 const { Analysis } = require("@tago-io/sdk");
 const axios = require("axios");
 
-async function getToHTTP(context) {
+async function startAnalysis(context) {
   const options = {
     url: "https://api.tago.io/info",
     method: "GET",
@@ -38,7 +38,7 @@ async function getToHTTP(context) {
   }
 }
 
-module.exports = new Analysis(getToHTTP);
+Analysis.use(startAnalysis);
 
 // To run analysis on your machine (external)
-// module.exports = new Analysis(getToHTTP, { token: "YOUR-TOKEN" });
+// Analysis.use(myAnalysis, { token: "YOUR-TOKEN" });
